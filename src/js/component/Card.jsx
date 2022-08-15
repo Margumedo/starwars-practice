@@ -14,10 +14,18 @@ function Card({ item, nature, index }) {
 
     const { character_id } = params
 
+    let imageLink = nature === 'Characters'? 'characters':'planets';
+       
+
     return (
         <div className="col-12 col-md-4">
             <div className="card my-3" >
-                <img src={CloneWars} className="card-img-top" alt="..." />
+                {imageLink==="characters"?
+                <img src={`https://starwars-visualguide.com/assets/img/${imageLink}/${index + 1}.jpg`} className="card-img-top img-size-card" alt="..." />:
+                
+                <img src={`https://starwars-visualguide.com/assets/img/${imageLink}/${index==0?Math.floor(Math.random()*10+2):index + 1}.jpg`} className="card-img-top img-size-card" alt="..." />
+                
+                }
                 <div className="card-body">
                     <h5 className="card-title">{item.name}</h5>
                     {nature === 'Characters' ?
